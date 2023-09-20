@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from "./pages/home/Home.jsx";
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import List from "./pages/list/List.jsx";
+import Login from "./pages/login/Login.jsx";
+import Single from "./pages/single/Single.jsx";
+import New from "./pages/new/New.jsx";
+import { productInputs, userInputs } from "./formSource.js";
+import "./style/dark.scss";
 
-function App() {
+const App = ()=> {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/">
+            <Route index element={<Home/>} />
+            <Route path="login" element={<Login/>} />
+            <Route path="users">
+              <Route index element={<List page={"users"}/>} />
+              <Route path=":userid" element={<Single/>} />
+              <Route path="new" element={<New inputArr={userInputs} title="Add New User"/>} />
+            </Route>
+            <Route path="products">
+              <Route index element={<List page={"products"}/>} />
+              <Route path=":productid" element={<Single/>} />
+              <Route path="new" element={<New inputArr={productInputs} title="Add New Product"/>} />
+            </Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
