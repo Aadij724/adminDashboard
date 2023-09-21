@@ -3,6 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar.jsx";
 import Navbar from "../../components/navbar/Navbar.jsx";
 import DataTable from "../../components/dataTable/DataTable.jsx";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const List = ({page})=> {
 

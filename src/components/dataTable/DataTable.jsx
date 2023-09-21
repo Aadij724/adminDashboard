@@ -1,19 +1,35 @@
 import "../dataTable/DataTable.scss";
 import { DataGrid } from '@mui/x-data-grid';
-import { userColumns, userRows, productRows } from "../../dataTableSource.js";
+// import { userColumns, userRows, productRows } from "../../dataTableSource.js";
+import { userColumns } from "../../dataTableSource.js";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import DataContext from "../../context/Data/DataContext";
 
 
 const DataTable = ({page})=> {
 
-    const [data, setData] = useState( page==="users" ? userRows : productRows );
+    const rows_d = useContext(DataContext);
+
+    // const [data, setData] = useState( page==="users" ? userRows : productRows );
+
+    const [data, setData] = useState(page==="users" ? rows_d.userRows : rows_d.productRows)
 
     const handleClick = (id)=>{
-        setData( data.filter((d)=>{
-            if(d.id!==id) 
-                return d;
-        }) );
+        if( page==="users") {
+            rows_d.userRows = rows_d.userRows.filter((row)=>{
+                if(row.id!==id)
+                    return row;
+                })
+            setData(rows_d.userRows);
+        } else if ( page==="products" ) {
+            rows_d.productRows = rows_d.productRows.filter((row)=>{
+                if(row.id!==id)
+                    return row;
+                })
+            setData(rows_d.productRows);
+        }
+        
     }
 
     const actionColumn = {

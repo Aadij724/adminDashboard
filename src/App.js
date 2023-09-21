@@ -10,10 +10,21 @@ import Single from "./pages/single/Single.jsx";
 import New from "./pages/new/New.jsx";
 import { productInputs, userInputs } from "./formSource.js";
 import "./style/dark.scss";
+import DarkThemeState from "./context/darkTheme/darkThemeState.jsx";
+import { useContext } from "react";
+import DarkThemeContext from "./context/darkTheme/darkThemeContext.jsx";
+import DataState from "./context/Data/DataState.jsx";
 
 const App = ()=> {
+  
+    // const {darkTheme, updateTheme} = useContext(darkThemeContext);
+    
+    // updateTheme();
   return (
-    <div className="app">
+    <DarkThemeState>
+    <DataState>
+      
+    <div className={ "app"}>
       <BrowserRouter>
         <Routes>
           <Route path="/">
@@ -33,6 +44,9 @@ const App = ()=> {
         </Routes>
       </BrowserRouter>
     </div>
+     
+    </DataState>
+    </DarkThemeState>
   );
 }
 
