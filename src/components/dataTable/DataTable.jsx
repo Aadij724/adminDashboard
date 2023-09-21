@@ -22,6 +22,7 @@ const DataTable = ({page})=> {
                     return row;
                 })
             setData(rows_d.userRows);
+            console.log()
         } else if ( page==="products" ) {
             rows_d.productRows = rows_d.productRows.filter((row)=>{
                 if(row.id!==id)
