@@ -11,20 +11,20 @@ import New from "./pages/new/New.jsx";
 import { productInputs, userInputs } from "./formSource.js";
 import "./style/dark.scss";
 import DarkThemeState from "./context/darkTheme/darkThemeState.jsx";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import DarkThemeContext from "./context/darkTheme/darkThemeContext.jsx";
 import DataState from "./context/Data/DataState.jsx";
 
 const App = ()=> {
   
-    // const {darkTheme, updateTheme} = useContext(darkThemeContext);
-    
-    // updateTheme();
+  let {darkTheme, updateTheme} = useContext(DarkThemeContext);
+
+  // darkTheme = toggleTheme(darkTheme);
   return (
-    <DarkThemeState>
     <DataState>
-      
-    <div className={ "app"}>
+    {/* <DarkThemeState> */}
+  
+    <div className={ darkTheme ? "app dark" : "app"}>
       <BrowserRouter>
         <Routes>
           <Route path="/">
@@ -45,8 +45,9 @@ const App = ()=> {
       </BrowserRouter>
     </div>
      
+     
+    {/* </DarkThemeState> */}
     </DataState>
-    </DarkThemeState>
   );
 }
 

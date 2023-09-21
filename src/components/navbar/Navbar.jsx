@@ -6,9 +6,14 @@ import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
-
+import { useContext } from "react";
+import DarkThemeContext from "../../context/darkTheme/darkThemeContext";
+import LightModeIcon from '@mui/icons-material/LightMode';
 
 const Navbar = () => {
+
+    const {darkTheme, updateTheme, setTheme} = useContext(DarkThemeContext);
+
     return (
         <div className="navbar">
             <div className="wrapper">
@@ -22,7 +27,16 @@ const Navbar = () => {
                         English
                     </div>
                     <div className="item">
-                        <DarkModeOutlinedIcon className="icon"/>
+                        {/* {
+                            darkTheme
+                            ? <LightModeIcon className="icon" onClick={()=>{updateTheme("toggle");}}/>
+                            : <DarkModeOutlinedIcon className="icon" onClick={()=>{updateTheme("toggle");}}/>
+                        }  */}
+                        {
+                            darkTheme
+                            ? <LightModeIcon className="icon" onClick={()=>{setTheme((prev)=>!prev);}}/>
+                            : <DarkModeOutlinedIcon className="icon" onClick={()=>{setTheme((prev)=>!prev);}}/>
+                        } 
                     </div>
                     <div className="item">
                         <FullscreenExitIcon className="icon"/>

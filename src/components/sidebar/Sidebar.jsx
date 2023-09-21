@@ -14,11 +14,13 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import darkThemeContext from "../../context/darkTheme/darkThemeContext";
+import DarkThemeContext from "../../context/darkTheme/darkThemeContext";
+import { dark } from "@mui/material/styles/createPalette";
+
 
 const Sidebar = ()=> {
-
-    const themeDetail = useContext(darkThemeContext);
+    
+    let {darkTheme, updateTheme} = useContext(DarkThemeContext);
 
     return (
         <div className="sidebar">
@@ -95,8 +97,8 @@ const Sidebar = ()=> {
                 </ul>
             </div>
             <div className="bottom">
-                {/* <div className="colorOptions" onClick={themeDetail.setTheme("white")}></div>
-                <div className="colorOptions" onClick={themeDetail.setTheme("dark")}></div> */}
+                <div className="colorOptions" onClick={()=>{updateTheme("white");}}></div>
+                <div className="colorOptions" onClick={()=>{updateTheme("black");}}></div>
             </div>
         </div>
     );
