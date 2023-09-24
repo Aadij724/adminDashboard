@@ -15,12 +15,12 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import DarkThemeContext from "../../context/darkTheme/darkThemeContext";
-import { dark } from "@mui/material/styles/createPalette";
+import {ACTIONS} from "../../reducer/themeReducer";
 
 
 const Sidebar = ()=> {
     
-    let {darkTheme, updateTheme} = useContext(DarkThemeContext);
+    let {darkTheme, dispatch} = useContext(DarkThemeContext);
 
     return (
         <div className="sidebar">
@@ -97,8 +97,8 @@ const Sidebar = ()=> {
                 </ul>
             </div>
             <div className="bottom">
-                <div className="colorOptions" onClick={()=>{updateTheme("white");}}></div>
-                <div className="colorOptions" onClick={()=>{updateTheme("black");}}></div>
+                <div className= { darkTheme==="white" ? "colorOptions focus" : "colorOptions"} onClick={()=>{dispatch({ type: ACTIONS.LIGHT})}}></div>
+                <div className={ darkTheme==="black" ? "colorOptions focus" : "colorOptions"} onClick={()=>{dispatch({ type: ACTIONS.DARK})}}></div>
             </div>
         </div>
     );

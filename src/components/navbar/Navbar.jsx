@@ -9,10 +9,11 @@ import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
 import { useContext } from "react";
 import DarkThemeContext from "../../context/darkTheme/darkThemeContext";
 import LightModeIcon from '@mui/icons-material/LightMode';
+import {ACTIONS} from "../../reducer/themeReducer";
 
 const Navbar = () => {
 
-    const {darkTheme, updateTheme, setTheme} = useContext(DarkThemeContext);
+    const {darkTheme, dispatch} = useContext(DarkThemeContext);
 
     return (
         <div className="navbar">
@@ -27,15 +28,10 @@ const Navbar = () => {
                         English
                     </div>
                     <div className="item">
-                        {/* {
-                            darkTheme
-                            ? <LightModeIcon className="icon" onClick={()=>{updateTheme("toggle");}}/>
-                            : <DarkModeOutlinedIcon className="icon" onClick={()=>{updateTheme("toggle");}}/>
-                        }  */}
                         {
-                            darkTheme
-                            ? <LightModeIcon className="icon" onClick={()=>{setTheme((prev)=>!prev);}}/>
-                            : <DarkModeOutlinedIcon className="icon" onClick={()=>{setTheme((prev)=>!prev);}}/>
+                            darkTheme==="white"
+                            ? <LightModeIcon className="icon" onClick={()=>{dispatch({type: ACTIONS.TOGGLE})}}/>
+                            : <DarkModeOutlinedIcon className="icon" onClick={()=>{dispatch({type: ACTIONS.TOGGLE})}}/>
                         } 
                     </div>
                     <div className="item">

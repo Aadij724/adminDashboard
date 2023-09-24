@@ -1,30 +1,13 @@
-import { useState } from "react";
 import DarkThemeContext from "./darkThemeContext.jsx";
+import {themeReducer, INITIAL_THEME} from "../../reducer/themeReducer.js";
+import { useReducer } from "react";
 
 const DarkThemeState = (props)=>{
 
-    // const [ darkTheme, setDarkTheme ] = useState(false);
-
-    // const updateTheme = ()=>{
-    //     setDarkTheme((prev)=>{return !prev});
-    // }
-
-    // const darkTheme = false;
-    // const toggleTheme = (darkTheme)=>{
-    //     return !darkTheme;
-    // }
-    // toggleTheme(darkTheme);
-
-    const [darkTheme, setTheme] = useState(true);
-
-    const updateTheme = (str)=> {
-        if(str==="white") setTheme(false);
-        if(str==="black") setTheme(true);
-        if(str==="toggle") setTheme((prev)=>!prev);
-    }
+    const [darkTheme, dispatch] = useReducer(themeReducer, INITIAL_THEME);
 
     return (
-        <DarkThemeContext.Provider value={{darkTheme, updateTheme, setTheme}} >
+        <DarkThemeContext.Provider value={{darkTheme, dispatch}} >
             {props.children}
         </DarkThemeContext.Provider>
     );

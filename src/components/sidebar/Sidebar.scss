@@ -80,6 +80,10 @@
             &:nth-child(3){
                 background-color: #6439ff;
             }
+
+            &.focus{
+                border: solid#6439ff 2px;
+            }
         }
     }
 }
