@@ -3,7 +3,6 @@ import Sidebar from "../../components/sidebar/Sidebar.jsx";
 import Navbar from "../../components/navbar/Navbar.jsx";
 import DataTable from "../../components/dataTable/DataTable.jsx";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const List = ({page})=> {
 
@@ -15,13 +14,22 @@ const List = ({page})=> {
             <div className="list-container">
                 <Navbar className="navbar"/>
                 <div className="heading">    
-                    <div className="ttl">Add new {page==="users" && <>User</>}{page==="products" && <>Product</>}</div>
+                    {
+                        page==="users"
+                        ? <div className="ttl">Add new User</div>
+                        : <div className="ttl">Add new Product</div>
+                    }
+                    {/* <div className="ttl">Add new {page==="users" && <>User</>}{page==="products" && <>Product</>}</div> */}
                     <Link to={`/${page}/new`} style={{textDecoration: "none"}}>
                         <div className="ttlbtn">Add new</div> 
                     </Link> 
                 </div>
                 <div className="container">
-                    <DataTable page={page}/>
+                {
+                    page==="users"
+                    ? <DataTable page={"users"} />
+                    : <DataTable page={"products"} />
+                }
                 </div>
             </div>
         </div>

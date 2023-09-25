@@ -17,16 +17,12 @@ const DataTable = ({page})=> {
 
     const handleClick = (id)=>{
         if( page==="users") {
-            rows_d.userRows = rows_d.userRows.filter((row)=>{
-                if(row.id!==id)
-                    return row;
-                })
+            rows_d.userRows = rows_d.userRows.filter((row)=>
+                row.id!==id
+                )
             setData(rows_d.userRows);
         } else if ( page==="products" ) {
-            rows_d.productRows = rows_d.productRows.filter((row)=>{
-                if(row.id!==id)
-                    return row;
-                })
+            rows_d.productRows = rows_d.productRows.filter((row)=>row.id!==id);
             setData(rows_d.productRows);
         }
         

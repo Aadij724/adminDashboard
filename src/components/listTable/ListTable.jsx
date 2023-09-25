@@ -55,7 +55,7 @@ const ListTable = () => {
                         <TableCell align="tablecell">{row.amount}</TableCell>
                         <TableCell align="tablecell">{row.paymentMethod}</TableCell>
                         <TableCell align="tablecell">
-                            <div className={ row.status=="Approved" ? "status approved" : "status pending"}>
+                            <div className={ row.status==="Approved" ? "status approved" : "status pending"}>
                                 {row.status}
                             </div>
                         </TableCell>
